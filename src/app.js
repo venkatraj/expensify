@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, NavLink, Route, Switch } from 'react-router-dom';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 
@@ -30,19 +30,42 @@ const HelpPage = () => (
 
 const NotFoundPage = () => (
   <div>
-    <h1>404! NotFoundPage</h1>
+    <h1>
+      404! <Link to="/">Go Home</Link>
+    </h1>
   </div>
+);
+
+const Header = () => (
+  <header>
+    <h1>Expensify</h1>
+    <NavLink to="/" activeClassName="is-active" exact>
+      Dashboard
+    </NavLink>
+    <NavLink to="/create" activeClassName="is-active">
+      Add
+    </NavLink>
+    <NavLink to="/edit" activeClassName="is-active">
+      Edit
+    </NavLink>
+    <NavLink to="/help" activeClassName="is-active">
+      Help
+    </NavLink>
+  </header>
 );
 
 const jsx = (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" component={ExpenseDashboardPage} exact />
-      <Route path="/create" component={AddExpensePage} />
-      <Route path="/edit" component={EditExpensePage} />
-      <Route path="/help" component={HelpPage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <div>
+      <Header />
+      <Switch>
+        <Route path="/" component={ExpenseDashboardPage} exact />
+        <Route path="/create" component={AddExpensePage} />
+        <Route path="/edit" component={EditExpensePage} />
+        <Route path="/help" component={HelpPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </div>
   </BrowserRouter>
 );
 
