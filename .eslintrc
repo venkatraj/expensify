@@ -1,0 +1,35 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "never",
+        "arrays": "only-multiline",
+        "objects": "only-multiline"
+      }
+    ],
+    "no-else-return": [
+      1,
+      {
+        "allowElseIf": true
+      }
+    ],
+    "react/button-has-type": [0, "never"],
+    "react/prop-types": [0],
+    "react/jsx-boolean-value": [0, "never"]
+  }
+}
