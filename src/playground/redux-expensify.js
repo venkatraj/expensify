@@ -36,14 +36,10 @@ const setTextFilter = (text = '') => ({
   text,
 });
 // SORT_BY_DATE
-const sortByDate = () => ({
-  type: 'SORT_BY_DATE',
-});
+const sortByDate = () => ({ type: 'SORT_BY_DATE' });
 
 // SORT_BY_AMOUNT
-const sortByAmount = () => ({
-  type: 'SORT_BY_AMOUNT',
-});
+const sortByAmount = () => ({ type: 'SORT_BY_AMOUNT' });
 // SET_START_DATE
 const setStartDate = (startDate = null) => ({
   type: 'SET_START_DATE',
@@ -164,7 +160,7 @@ const expenseTwo = store.dispatch(
   addExpense({ description: 'Coffee', amount: 800, createdAt: 1000 })
 );
 
-// store.dispatch(removeExpense({ id: expenseOne.expense.id }));
+store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 store.dispatch(
   editExpense(expenseTwo.expense.id, {
@@ -173,8 +169,8 @@ store.dispatch(
   })
 );
 
-// store.dispatch(setTextFilter('e'));
-// store.dispatch(sortByAmount());
-// store.dispatch(sortByDate());
-// store.dispatch(setStartDate(-10));
+store.dispatch(setTextFilter('e'));
+store.dispatch(sortByAmount());
+store.dispatch(sortByDate());
+store.dispatch(setStartDate(-10));
 store.dispatch(setEndDate(2000));
