@@ -31,11 +31,29 @@ const editExpense = (id, updates) => ({
 });
 
 // SET_TEXT_FILTER
-
+const setTextFilter = (text = '') => ({
+  type: 'SET_TEXT_FILTER',
+  text,
+});
 // SORT_BY_DATE
+const sortByDate = () => ({
+  type: 'SORT_BY_DATE',
+});
+
 // SORT_BY_AMOUNT
+const sortByAmount = () => ({
+  type: 'SORT_BY_AMOUNT',
+});
 // SET_START_DATE
+const setStartDate = (startDate) => ({
+  type: 'SET_START_DATE',
+  startDate,
+});
 // SET_END_DATE
+const setEndDate = (endDate) => ({
+  type: 'SET_END_DATE',
+  endDate,
+});
 
 // Expenses Reducer
 const expenseReducerDefaultState = [];
@@ -71,6 +89,34 @@ const filterReducerDefaultState = {
 
 const filterReducer = (state = filterReducerDefaultState, action) => {
   switch (action.type) {
+    case 'SET_TEXT_FILTER':
+      const { text } = action;
+      return {
+        ...state,
+        text,
+      };
+    case 'SORT_BY_AMOUNT':
+      return {
+        ...state,
+        sortBy: 'amount',
+      };
+    case 'SORT_BY_DATE':
+      return {
+        ...state,
+        sortBy: 'date',
+      };
+    case 'SET_START_DATE':
+      const { startDate } = action;
+      return {
+        ...state,
+        startDate,
+      };
+    case 'SET_END_DATE':
+      const { endDate } = action;
+      return {
+        ...state,
+        endDate,
+      };
     default:
       return state;
   }
@@ -100,6 +146,12 @@ store.dispatch(
     amount: 850,
   })
 );
+
+store.dispatch(setTextFilter('hello'));
+store.dispatch(sortByAmount());
+store.dispatch(sortByDate());
+store.dispatch(setStartDate(-10));
+store.dispatch(setEndDate(21));
 
 const demoState = {
   expenses: [
