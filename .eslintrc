@@ -38,11 +38,13 @@
         "ObjectExpression": { "multiline": true },
         "ObjectPattern": { "multiline": true },
         "ImportDeclaration": "never",
-        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+        "ExportDeclaration": { "multiline": true }
       }
     ],
     "react/button-has-type": [0, "never"],
     "react/prop-types": [0],
-    "react/jsx-boolean-value": [0, "never"]
+    "react/jsx-boolean-value": [0, "never"],
+    "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }],
+    "react/jsx-props-no-spreading": [0, { "custom": "ignore" }]
   }
 }
