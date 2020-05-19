@@ -11,12 +11,6 @@ import './styles/style.scss';
 
 const store = configureStore();
 
-store.subscribe(() => {
-  const { expenses, filters } = store.getState();
-  const visibleExpenses = getVisibleExpenses(expenses, filters);
-  console.log(visibleExpenses);
-});
-
 store.dispatch(
   addExpense({ description: 'Rent', amount: 400000, createdAt: 2000 })
 );
