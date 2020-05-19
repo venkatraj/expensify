@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "env": {
@@ -45,6 +46,15 @@
     "react/prop-types": [0],
     "react/jsx-boolean-value": [0, "never"],
     "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }],
-    "react/jsx-props-no-spreading": [0, { "custom": "ignore" }]
+    "react/jsx-props-no-spreading": [0, { "custom": "ignore" }],
+    "react/state-in-constructor": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": false
+      }
+    ]
   }
 }

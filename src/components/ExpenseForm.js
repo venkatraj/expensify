@@ -8,9 +8,10 @@ class ExpenseForm extends Component {
   state = {
     description: '',
     note: '',
-    amount: 0,
+    amount: '',
     createdAt: moment(),
     calenderFocused: false,
+    error: null,
   };
 
   handleDescriptionChange = (e) => {
@@ -27,17 +28,37 @@ class ExpenseForm extends Component {
 
   handleAmountChange = (e) => {
     const amount = e.target.value;
-    if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+    if (amount && amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState({ amount });
     }
   };
 
   handleDateChange = (createdAt) => {
-    this.setState({ createdAt });
+    if (createdAt) {
+      this.setState({ createdAt });
+    }
   };
 
   handleFocusChange = ({ focused }) => {
     this.setState({ calenderFocused: focused });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { description, amount, createdAt, note } = this.state;
+    const { onSubmit } = this.props;
+    if (!description && !amount) {
+      const error = 'Please provide valid description and amount';
+      this.setState({ error });
+    } else {
+      this.setState({ error: null });
+      onSubmit({
+        description,
+        amount: parseFloat(amount) * 100,
+        createdAt: createdAt.valueOf(),
+        note,
+      });
+    }
   };
 
   render() {
@@ -47,10 +68,12 @@ class ExpenseForm extends Component {
       amount,
       createdAt,
       calenderFocused,
+      error,
     } = this.state;
     return (
       <div>
-        <form>
+        {error && <p>{error}</p>}
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Description"
