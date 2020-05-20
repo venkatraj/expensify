@@ -5,14 +5,18 @@ import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
 
 class ExpenseForm extends Component {
-  state = {
-    description: '',
-    note: '',
-    amount: '',
-    createdAt: moment(),
-    calenderFocused: false,
-    error: null,
-  };
+  constructor(props) {
+    super(props);
+    const { expense } = props;
+    this.state = {
+      description: expense ? expense.description : '',
+      note: expense ? expense.note : '',
+      amount: expense ? (expense.amount / 100).toString() : '',
+      createdAt: expense ? moment(expense.createdAt) : moment(),
+      calenderFocused: false,
+      error: null,
+    };
+  }
 
   handleDescriptionChange = (e) => {
     // this.setState({ description: e.target.value });
