@@ -23,7 +23,8 @@
       {
         "functions": "never",
         "arrays": "only-multiline",
-        "objects": "only-multiline"
+        "objects": "only-multiline",
+        "imports": "only-multiline"
       }
     ],
     "no-else-return": [
@@ -32,13 +33,13 @@
         "allowElseIf": true
       }
     ],
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": "off",
     "object-curly-newline": [
       "error",
       {
         "ObjectExpression": { "multiline": true },
         "ObjectPattern": { "multiline": true },
-        "ImportDeclaration": "never",
+        "ImportDeclaration": { "multiline": true },
         "ExportDeclaration": { "multiline": true }
       }
     ],
