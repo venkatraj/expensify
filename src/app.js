@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
+import getExpensesTotal from './selectors/expenses-total';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 
@@ -19,6 +20,8 @@ store.dispatch(
 store.dispatch(
   addExpense({ description: 'Water Bill', amount: 800, createdAt: 1000 })
 );
+
+console.log(getExpensesTotal(store.getState().expenses));
 
 const jsx = (
   <Provider store={store}>
