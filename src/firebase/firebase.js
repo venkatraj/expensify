@@ -13,6 +13,30 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+
+const expenses = [
+  {
+    description: 'First Expense',
+    note: 'First Note',
+    amount: 1234,
+    createdAt: 1234567,
+  },
+  {
+    description: 'Second Expense',
+    note: 'Second Note',
+    amount: 1234,
+    createdAt: 7654321,
+  },
+  {
+    description: 'First Expense',
+    note: 'First Note',
+    amount: 1234,
+    createdAt: 918273,
+  },
+];
+
+expenses.map((expense) => database.ref('expenses').push(expense));
+
 // database
 //   .ref()
 //   .set({
