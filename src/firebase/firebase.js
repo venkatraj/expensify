@@ -13,21 +13,43 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
-database.ref().set({
-  name: 'Venkat Raj',
-  age: 45,
-  isSingle: false,
-  location: {
-    city: 'Salem',
-    country: 'India',
-  },
+database
+  .ref()
+  .set({
+    name: 'Venkat Raj',
+    age: 45,
+    stressLevel: 6,
+    job: {
+      title: 'Software Engineer',
+      company: 'Google',
+    },
+    location: {
+      city: 'Salem',
+      state: 'Tamilnadu',
+      country: 'India',
+    },
+    profession: null,
+  })
+  .then(() => console.log('Data saved!'))
+  .catch(() => console.log('Data did not saved!'));
+
+database.ref().update({
+  stressLevel: 9,
+  'job/company': 'Amazon',
+  'location/city': 'Seattle',
 });
 
-database.ref('age').set(46);
+// database.ref('age').set(46);
 
-database.ref('location/city').set('Coimbatore');
+// database.ref('location/city').set('Coimbatore');
 
-database.ref('attributes').set({
-  height: 163,
-  weight: 65,
-});
+// database.ref('attributes').set({
+//   height: 163,
+//   weight: 65,
+// });
+
+// database
+//   .ref('isSingle')
+//   .remove()
+//   .then(() => console.log('isSingle property removed'))
+//   .catch(() => console.log('Remove failed!'));
