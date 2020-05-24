@@ -12,7 +12,22 @@ const config = {
 
 firebase.initializeApp(config);
 
-firebase.database().ref().set({
+const database = firebase.database();
+database.ref().set({
   name: 'Venkat Raj',
-  age: 46,
+  age: 45,
+  isSingle: false,
+  location: {
+    city: 'Salem',
+    country: 'India',
+  },
+});
+
+database.ref('age').set(46);
+
+database.ref('location/city').set('Coimbatore');
+
+database.ref('attributes').set({
+  height: 163,
+  weight: 65,
 });
