@@ -7,6 +7,7 @@ import { addExpense } from './actions/expenses';
 import getExpensesTotal from './selectors/expenses-total';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
+import './firebase/firebase';
 
 const store = configureStore();
 
